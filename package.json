@@ -1,0 +1,16 @@
+{
+  "name": "auto-generator",
+  "version": "0.1.1",
+  "main": "index.js",
+  "bin": {
+    "gen": "index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.19.0",
+    "find-root": "^1.1.0",
+    "inquirer": "^6.2.2",
+    "warning": "^4.0.3"
+  }
+}
