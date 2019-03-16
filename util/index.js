@@ -20,7 +20,12 @@ function checkDirExist(path) {
     }
 }
 
+function firstUpperCase(str) {
+    return str.replace(/^\S/, function (s) { return s.toUpperCase(); });
+}
+
 module.exports = {
     root: getRoot(),
     checkDirExist,
+    firstUpperCase,
 }

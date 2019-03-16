@@ -1,10 +1,10 @@
 /** 头部注释 */
 
-import react, { PureComponent } from 'react'
+import react, { Component } from 'react'
 
 // import './index.scss';
 
-export default class Name extends PureComponent {
+export default class Name extends Component {
     constructor() {
         this.state = {}
     }

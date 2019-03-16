@@ -25,7 +25,7 @@ program
             message: '创建哪一类组件',
             choices: [
                 {
-                    name: '纯函数组件',
+                    name: '纯组件',
                     value: 'pure'
                 },
                 {
