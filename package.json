@@ -1,6 +1,6 @@
 {
   "name": "auto-sftp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "bin": {
     "sftp": "index.js"
@@ -11,7 +11,7 @@
     "commander": "^2.19.0",
     "find-root": "^1.1.0",
     "inquirer": "^6.2.2",
-    "warning": "^4.0.3",
-    "ssh2-sftp-client": "^2.5.0"
+    "ssh2-sftp-client": "^2.5.0",
+    "warning": "^4.0.3"
   }
 }
