@@ -3,19 +3,19 @@ const path = require('path');
 const chalk = require('chalk')
 const warning = require('warning');
 const { root } = require('./index');
-let genrcStr = '';
+let sftprcStr = '';
 
 try {
-   genrcStr = fs.readFileSync(path.resolve(root, './genrc.json'))
+   sftprcStr = fs.readFileSync(path.resolve(root, './sftprc.json'))
 } catch (error) {
     // throw new Error('配置文件不存在')
     warning(
         false,
-        chalk.red('genrc.json is not exist.')
+        chalk.red('sftprc.json is not exist.')
     )
     return false
 }
 
-const genrc = JSON.parse(genrcStr);
+const sftprc = JSON.parse(sftprcStr);
 
-module.exports = genrc;
+module.exports = sftprc;

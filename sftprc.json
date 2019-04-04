@@ -1,0 +1,22 @@
+{
+  "test": [
+    {
+      "sftp": {
+        "host": "",
+        "post": 22,
+        "username": "",
+        "password": "",
+        "privateKey": "",
+        "passphrase": ""
+      },
+      "filesPath": [
+        {
+          "local": "./example/static",
+          "remote": "/remote",
+          "mode": "all"
+        }
+      ]
+    }
+  ],
+  "prod": []
+}
