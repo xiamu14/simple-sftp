@@ -4,8 +4,8 @@ const path = require("path");
 const chalk = require("chalk");
 const { root } = require("./index.js");
 
-module.exports = async function upload(configs) {
-  configs.forEach(config => {
+module.exports = function upload(configs) {
+  configs.forEach(async (config) => {
     const sftpConfig = config.sftp;
     const filesPath = config.filesPath;
 
@@ -89,8 +89,8 @@ function handleSftp(sftp, config, filesGroup) {
       try {
         await sftp.connect(config);
       } catch (error) {
-        console.log(error, "sftp文件服务器连接失败");
-        reject();
+        console.log("\n------ sftp文件服务器连接失败 ------\n");
+        return false;
       }
     }
     console.log("\n--------开始上传文件...------- \n");
