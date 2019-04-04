@@ -2,21 +2,20 @@
   "test": [
     {
       "sftp": {
-        "host": "",
+        "host": "193.112.219.228",
         "post": 22,
-        "username": "",
-        "password": "",
+        "username": "root",
+        "password": "xingtu#2019.",
         "privateKey": "",
         "passphrase": ""
       },
       "filesPath": [
         {
-          "local": "./example/static",
-          "remote": "/remote",
-          "mode": "all"
+          "local": "./example",
+          "remote": "/data/www/static/post/h5",
+          "mode": "onlyFile"
         }
       ]
     }
-  ],
-  "prod": []
+  ]
 }

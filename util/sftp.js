@@ -5,14 +5,13 @@ const chalk = require("chalk");
 const { root } = require("./index.js");
 
 module.exports = function upload(configs) {
-  configs.forEach(async (config) => {
+  configs.forEach(async config => {
     const sftpConfig = config.sftp;
     const filesPath = config.filesPath;
 
     const sftp = new Client();
 
     const filesGroup = handleFilePath(filesPath);
-
     await handleSftp(sftp, sftpConfig, filesGroup);
 
     process.exit();
@@ -20,13 +19,14 @@ module.exports = function upload(configs) {
 };
 
 function handleFilePath(filesPath) {
-  return filesPath.map(obj => {
+  const filesGroup= [];
+  filesPath.map(obj => {
     const { local, remote, mode } = obj;
     const files = fs.readdirSync(path.resolve(root, local));
     if (files.length === 0) {
       return false;
     }
-    return files.map(file => {
+    files.forEach(file => {
       // 判断文件是否为目录
       const fullname = path.join(local, file);
       const stats = fs.statSync(fullname);
@@ -37,7 +37,8 @@ function handleFilePath(filesPath) {
           // 循环读取文件
           handleFilePath({
             local: fullname,
-            remote: `${remote}/${file}`
+            remote: `${remote}/${file}`,
+            mode,
           });
         }
       } else {
@@ -46,16 +47,16 @@ function handleFilePath(filesPath) {
         //获取后缀
         const ext = file.substr(index + 1);
         const type = /png|jpeg|bmp|jpg|gif/.test(ext) ? "img" : ext;
-
-        return {
+        filesGroup.push({
           type: type,
           file: file,
           localPath: type !== "img" ? _lp : fs.readFileSync(_lp),
           remotePath: `${remote}/${file}`
-        };
+        });
       }
     });
   });
+  return filesGroup;
 }
 
 /**
