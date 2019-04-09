@@ -13,6 +13,11 @@
         {
           "local": "./example",
           "remote": "/data/www/static/post/h5",
+          "mode": "all"
+        },
+        {
+          "local": "./example/test",
+          "remote": "/data/www/static/post/h5",
           "mode": "onlyFile"
         }
       ]

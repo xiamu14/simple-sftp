@@ -1,8 +1,11 @@
-const findRoot = require("find-root");
+// const findRoot = require("find-root");
+// const path = require('path');
 const fs = require('fs');
 
 function getRoot() {
-    return findRoot(__dirname).split('/node_modules')[0];
+    // console.log(process.cwd());
+    return process.cwd();
+    // return findRoot(__dirname).split('/node_modules')[0];
 }
 
 function checkDirExist(path) {

@@ -11,17 +11,19 @@ module.exports = function upload(configs) {
 
     const sftp = new Client();
 
-    const filesGroup = handleFilePath(filesPath);
+    let filesGroup = [];
+    filesPath.forEach(obj => {
+      filesGroup = filesGroup.concat(handleFilePath(obj));
+    });
     await handleSftp(sftp, sftpConfig, filesGroup);
 
     process.exit();
   });
 };
 
-function handleFilePath(filesPath) {
-  const filesGroup= [];
-  filesPath.map(obj => {
-    const { local, remote, mode } = obj;
+function handleFilePath(filePath) {
+    const fileGroup = [];
+    const { local, remote, mode } = filePath;
     const files = fs.readdirSync(path.resolve(root, local));
     if (files.length === 0) {
       return false;
@@ -47,7 +49,7 @@ function handleFilePath(filesPath) {
         //获取后缀
         const ext = file.substr(index + 1);
         const type = /png|jpeg|bmp|jpg|gif/.test(ext) ? "img" : ext;
-        filesGroup.push({
+        fileGroup.push({
           type: type,
           file: file,
           localPath: type !== "img" ? _lp : fs.readFileSync(_lp),
@@ -55,8 +57,7 @@ function handleFilePath(filesPath) {
         });
       }
     });
-  });
-  return filesGroup;
+  return fileGroup;
 }
 
 /**
