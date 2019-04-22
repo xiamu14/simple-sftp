@@ -13,16 +13,19 @@ module.exports = function upload(configs) {
 
     let filesGroup = [];
     filesPath.forEach(obj => {
+      const fileGroup = handleFilePath(obj);
       filesGroup = filesGroup.concat(handleFilePath(obj));
     });
+    // console.log(filesGroup);
     await handleSftp(sftp, sftpConfig, filesGroup);
 
     process.exit();
   });
 };
 
-function handleFilePath(filePath) {
-    const fileGroup = [];
+function handleFilePath(files) {
+  const fileGroup = [];
+  function getFilePath(filePath) {
     const { local, remote, mode } = filePath;
     const files = fs.readdirSync(path.resolve(root, local));
     if (files.length === 0) {
@@ -37,10 +40,10 @@ function handleFilePath(filePath) {
         if (mode !== "onlyFile") {
           // 只读取文件，不读取目录
           // 循环读取文件
-          handleFilePath({
+          getFilePath({
             local: fullname,
             remote: `${remote}/${file}`,
-            mode,
+            mode
           });
         }
       } else {
@@ -57,6 +60,8 @@ function handleFilePath(filePath) {
         });
       }
     });
+  }
+  getFilePath(files);
   return fileGroup;
 }
 

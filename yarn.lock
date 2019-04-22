@@ -31,6 +31,16 @@ asn1@~0.2.0:
   dependencies:
     safer-buffer "~2.1.0"
 
+auto-sftp@./:
+  version "0.1.1"
+  dependencies:
+    chalk "^2.4.2"
+    commander "^2.19.0"
+    find-root "^1.1.0"
+    inquirer "^6.2.2"
+    ssh2-sftp-client "^2.5.0"
+    warning "^4.0.3"
+
 bcrypt-pbkdf@^1.0.2:
   version "1.0.2"
   resolved "http://r.cnpmjs.org/bcrypt-pbkdf/download/bcrypt-pbkdf-1.0.2.tgz#a4301d389b6a43f9b67ff3ca11a3f6637e360e9e"
