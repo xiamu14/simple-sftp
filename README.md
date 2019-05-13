@@ -39,3 +39,9 @@ npx sftp u
 }
 
 ```
+
+mode: all / onlyFile
+
+## TODO
+
+-[] 优化上传打印信息，按文件类型区分
